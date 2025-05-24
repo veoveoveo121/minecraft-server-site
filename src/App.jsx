@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 export default function App() {
   const [activeTab, setActiveTab] = useState("о сервере");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,9 +40,8 @@ export default function App() {
     playClickSound();
     e.preventDefault();
     setStatus("Отправка...");
-
     try {
-      const response = await fetch("https://discord.com/api/webhooks/1375921257081737307/p5CKB_1NhFGsGVdJHTMeMDcMSk8L49YFRkz9-DHVT6Qu3-USgMhup9MSQ88Z9Rb4JCw1", {
+      const response = await fetch("https://discord.com/api/webhooks/1375921257081737307/p5CKB_1NhFGsGVdJHTMeMDcMSk8L49YFRkz9-DHVT6Qu3-USgMhup9MSQ88Z9Rb4JCw1 ", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -65,7 +63,6 @@ export default function App() {
           ]
         })
       });
-
       if (response.ok) {
         setStatus("Сообщение отправлено!");
         setFormData({ name: "", discord: "", message: "" });
@@ -80,9 +77,8 @@ export default function App() {
 
   const castVote = async () => {
     playClickSound();
-
     try {
-      await fetch("https://discord.com/api/webhooks/1375921257081737307/p5CKB_1NhFGsGVdJHTMeMDcMSk8L49YFRkz9-DHVT6Qu3-USgMhup9MSQ88Z9Rb4JCw1", {
+      await fetch("https://discord.com/api/webhooks/YOUR_DISCORD_VOTE_WEBHOOK_URL ", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -91,7 +87,6 @@ export default function App() {
           content: `Голос за MinePRServer`
         })
       });
-
       alert("Вы проголосовали за сервер!");
     } catch (err) {
       alert("Ошибка голосования");
@@ -135,17 +130,14 @@ export default function App() {
         backgroundSize: '100px 100px',
         animation: 'backgroundMove 20s linear infinite'
       }}></div>
-
       {/* Прогресс загрузки при переходе между вкладками */}
       {loading && (
         <div className="fixed top-0 left-0 w-full h-1 bg-yellow-400 animate-progress-bar z-50"></div>
       )}
-
       {/* Header */}
       <header className={`${darkMode ? 'bg-black/70 border-pink-600 shadow-pink-900/30' : 'bg-white/70 border-pink-300 shadow-pink-300/30'} sticky top-0 z-50 backdrop-blur-md border-b shadow-lg`}>
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className={`${darkMode ? 'text-pink-300' : 'text-pink-700'} text-xl md:text-2xl font-bold tracking-wider`}>MinePRServer</h1>
-
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
             {["о сервере", "особенности", "проходки", "контакты"].map((tab) => (
@@ -160,7 +152,6 @@ export default function App() {
               </button>
             ))}
           </nav>
-
           {/* Тема и меню */}
           <div className="flex items-center space-x-4">
             {/* Кнопка смены темы с текстом */}
@@ -174,7 +165,6 @@ export default function App() {
             >
               {darkMode ? "Светлая тема" : "Тёмная тема"}
             </button>
-
             <button
               className={`${darkMode ? 'text-pink-300' : 'text-pink-700'} md:hidden focus:outline-none`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -189,7 +179,6 @@ export default function App() {
             </button>
           </div>
         </div>
-
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className={`${darkMode ? 'bg-black/80' : 'bg-white/80'} p-4 space-y-4 animate-fadeIn`}>
@@ -207,7 +196,6 @@ export default function App() {
           </nav>
         )}
       </header>
-
       {/* Main Content */}
       <main className="relative z-10 container mx-auto px-4 py-12">
         {/* Hero Section */}
@@ -225,7 +213,6 @@ export default function App() {
             Купить проходку
           </button>
         </section>
-
         {/* Online Status */}
         <section className="mb-12 text-center">
           <div className={`inline-flex items-center px-6 py-3 rounded-xl border ${darkMode ? 'border-green-500 bg-green-500/20' : 'border-green-700 bg-green-100'} shadow-lg`}>
@@ -233,7 +220,6 @@ export default function App() {
             <span className="text-xl font-bold">{onlinePlayers ?? "--"} игроков онлайн</span>
           </div>
         </section>
-
         {/* Tab Content */}
         <div className="transition-opacity duration-500 ease-in-out">
           {!loading && activeTab === "о сервере" && (
@@ -267,7 +253,6 @@ export default function App() {
               </div>
             </section>
           )}
-
           {!loading && activeTab === "особенности" && (
             <section id="features" className="mb-20 animate-fadeIn">
               <h3 className={`${darkMode ? 'text-pink-300' : 'text-pink-600'} text-2xl md:text-3xl font-bold mb-6 text-center`}>Особенности сервера</h3>
@@ -294,7 +279,6 @@ export default function App() {
               </div>
             </section>
           )}
-
           {!loading && activeTab === "проходки" && (
             <section id="pricing" className="mb-20 animate-fadeIn">
               <h3 className={`${darkMode ? 'text-pink-300' : 'text-pink-600'} text-2xl md:text-3xl font-bold mb-6 text-center`}>Проходки</h3>
@@ -344,7 +328,6 @@ export default function App() {
                   </div>
                 ))}
               </div>
-
               {/* История покупок */}
               <div>
                 <h4 className={`${darkMode ? 'text-pink-300' : 'text-pink-600'} text-2xl font-bold mb-6`}>История покупок</h4>
@@ -371,7 +354,6 @@ export default function App() {
               </div>
             </section>
           )}
-
           {!loading && activeTab === "контакты" && (
             <section id="contact" className="mb-20 animate-fadeIn">
               <h3 className={`${darkMode ? 'text-pink-300' : 'text-pink-600'} text-2xl md:text-3xl font-bold mb-6 text-center`}>Свяжитесь с нами</h3>
@@ -416,7 +398,7 @@ export default function App() {
                       placeholder="Ваше сообщение"
                     ></textarea>
                   </div>
-                  <button type="submit" className="w-full py-3 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 pulse-button">
+                  <button type="submit" className="w-full py-3 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-pink-500/40 transition-all duration-300">
                     Отправить
                   </button>
                   {status && <p className="mt-3 text-center text-sm text-green-400">{status}</p>}
@@ -426,7 +408,6 @@ export default function App() {
           )}
         </div>
       </main>
-
       {/* Боковой чат */}
       <aside className={`fixed right-4 bottom-4 w-80 h-96 ${darkMode ? 'bg-black/90 border-pink-700' : 'bg-white/90 border-pink-300'} rounded-lg shadow-2xl border transition-transform duration-300 ${chatVisible ? 'translate-y-0' : 'translate-y-96'} z-40 overflow-hidden`}>
         <div className={`flex justify-between items-center p-3 ${darkMode ? 'bg-black/70 border-pink-700' : 'bg-white/70 border-pink-300'} border-b`}>
@@ -445,7 +426,6 @@ export default function App() {
           className="bg-black"
         ></iframe>
       </aside>
-
       {/* Кнопка чата */}
       <button
         onClick={() => setChatVisible(!chatVisible)}
@@ -453,7 +433,6 @@ export default function App() {
       >
         Чат сервера
       </button>
-
       {/* Footer */}
       <footer className={`${darkMode ? 'bg-black/60 border-pink-800' : 'bg-white/60 border-pink-300'} py-6 border-t`}>
         <div className="container mx-auto px-4">
@@ -475,61 +454,50 @@ export default function App() {
           </div>
         </div>
       </footer>
-
       {/* Global Styles */}
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap ');
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap  ');
         .font-minecraft {
           font-family: 'Press Start 2P', monospace;
           font-size: 12px;
         }
-
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
         }
-
         @keyframes backgroundMove {
           from { background-position: 0 0; }
           to { background-position: 200px 200px; }
         }
-
         @keyframes pulse {
           0%, 100% { transform: scale(1); }
           50% { transform: scale(1.05); }
         }
-
         @keyframes progress {
           0% { width: 0%; }
           100% { width: 100%; }
         }
-
         .animate-fadeIn {
           animation: fadeIn 0.5s ease-in-out;
         }
-
         .pulse-button {
           animation: pulse 2s infinite;
         }
-
         .animate-progress-bar {
           animation: progress 0.5s ease-in-out forwards;
         }
-
         body.dark {
           background-image: url('https://placehold.co/100x100/2d2d2d/ffffff?text=Grass '), url('https://placehold.co/100x100/ffc0cb/ffffff?text=Torch ');
           background-repeat: repeat;
           background-size: 100px 100px;
           animation: backgroundMove 20s linear infinite;
         }
-
         body.light {
           background-image: url('https://placehold.co/100x100/ffe6f0/8b008b?text=Grass '), url('https://placehold.co/100x100/ffd1dc/8b008b?text=Torch ');
           background-repeat: repeat;
           background-size: 100px 100px;
           animation: backgroundMove 20s linear infinite;
         }
-
         @media (prefers-color-scheme: light) {
           body:not(.dark) {
             background-image: url('https://placehold.co/100x100/ffe6f0/8b008b?text=Grass '), url('https://placehold.co/100x100/ffd1dc/8b008b?text=Torch ');

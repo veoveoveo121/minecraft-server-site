@@ -4,7 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minecraft Server</title>
-  <script type="module" crossorigin src="/assets/index-835f57e5.js"></script>
+
+  <!-- Подключение шрифта -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap " rel="stylesheet">
+
+  <!-- Базовые стили -->
+  <style>
+    .font-minecraft {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 12px;
+    }
+
+    body.dark {
+      background-image: url('https://placehold.co/100x100/2d2d2d/ffffff?text=Grass '), url('https://placehold.co/100x100/ffc0cb/ffffff?text=Torch ');
+      background-repeat: repeat;
+      background-size: 100px 100px;
+      animation: backgroundMove 20s linear infinite;
+    }
+
+    body.light {
+      background-image: url('https://placehold.co/100x100/ffe6f0/8b008b?text=Grass '), url('https://placehold.co/100x100/ffd1dc/8b008b?text=Torch ');
+      background-repeat: repeat;
+      background-size: 100px 100px;
+      animation: backgroundMove 20s linear infinite;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-repeat: repeat;
+      background-size: 100px 100px;
+      animation: backgroundMove 20s linear infinite;
+    }
+
+    @keyframes backgroundMove {
+      from { background-position: 0 0; }
+      to { background-position: 200px 200px; }
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-de8b653f.js"></script>
 </head>
 <body>
   <div id="root"></div>
