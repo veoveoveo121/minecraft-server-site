@@ -454,56 +454,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-      {/* Global Styles */}
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap  ');
-        .font-minecraft {
-          font-family: 'Press Start 2P', monospace;
-          font-size: 12px;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes backgroundMove {
-          from { background-position: 0 0; }
-          to { background-position: 200px 200px; }
-        }
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
-        }
-        @keyframes progress {
-          0% { width: 0%; }
-          100% { width: 100%; }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.5s ease-in-out;
-        }
-        .pulse-button {
-          animation: pulse 2s infinite;
-        }
-        .animate-progress-bar {
-          animation: progress 0.5s ease-in-out forwards;
-        }
-        body.dark {
-          background-image: url('https://placehold.co/100x100/2d2d2d/ffffff?text=Grass '), url('https://placehold.co/100x100/ffc0cb/ffffff?text=Torch ');
-          background-repeat: repeat;
-          background-size: 100px 100px;
-          animation: backgroundMove 20s linear infinite;
-        }
-        body.light {
-          background-image: url('https://placehold.co/100x100/ffe6f0/8b008b?text=Grass '), url('https://placehold.co/100x100/ffd1dc/8b008b?text=Torch ');
-          background-repeat: repeat;
-          background-size: 100px 100px;
-          animation: backgroundMove 20s linear infinite;
-        }
-        @media (prefers-color-scheme: light) {
-          body:not(.dark) {
-            background-image: url('https://placehold.co/100x100/ffe6f0/8b008b?text=Grass '), url('https://placehold.co/100x100/ffd1dc/8b008b?text=Torch ');
-          }
-        }
-      `}</style>
     </div>
   );
 }
