@@ -3,6 +3,10 @@
 :root {
   --bg-gradient-dark: linear-gradient(135deg, #2d003e, #6a005d);
   --bg-gradient-light: linear-gradient(135deg, #ffe6f0, #ffffff);
+  --primary-color: #ff79c6; /* Розовый акцент */
+  --secondary-color: #8b008b; /* Пурпурный акцент */
+  --text-color-dark: #ffffff;
+  --text-color-light: #222222;
 }
 
 body {
@@ -18,41 +22,91 @@ body {
 }
 
 body.dark {
-  background-image: url('https://placehold.co/100x100/2d2d2d/ffffff?text=543534 '), url('https://placehold.co/100x100/ffc0cb/ffffff?text=Torch ');
+  background-image: url('https://placehold.co/100x100/2d2d2d/ffffff?text=Grass '), url('https://placehold.co/100x100/ffc0cb/ffffff?text=Torch ');
+  color: var(--text-color-dark);
 }
 
 body.light {
-  background-image: url('https://placehold.co/100x100/ffe6f0/8b008b?text=543543 '), url('https://placehold.co/100x100/ffd1dc/8b008b?text=Torch ');
+  background-image: url('https://placehold.co/100x100/ffe6f0/8b008b?text=Grass '), url('https://placehold.co/100x100/ffd1dc/8b008b?text=Torch ');
+  color: var(--text-color-light);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
 }
 
-@keyframes backgroundMove {
-  from { background-position: 0 0; }
-  to { background-position: 200px 200px; }
+nav button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: transparent;
+  color: var(--primary-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+nav button:hover {
+  background-color: rgba(255, 121, 198, 0.2);
 }
 
-@keyframes progress {
-  0% { width: 0%; }
-  100% { width: 100%; }
+main {
+  padding: 2rem;
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.5s ease-in-out;
+h1, h2, h3 {
+  color: var(--primary-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.pulse-button {
-  animation: pulse 2s infinite;
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.animate-progress-bar {
-  animation: progress 0.5s ease-in-out forwards;
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+input, textarea {
+  padding: 0.75rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-color-dark);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--text-color-dark);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
 }
