@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-dashboard">
+    <h2>Заявка #{{ application_id }}</h2>
+    <p><strong>Никнейм:</strong> {{ application['nickname'] }}</p>
+    <p><strong>Возраст:</strong> {{ application['age'] }}</p>
+    <p><strong>Мотивационное письмо:</strong> {{ application['reason'] }}</p>
+
+    <form action="{{ url_for('view_application', application_id=application_id) }}" method="post">
+        <button type="submit" name="action" value="accept" class="button accept">Принять</button>
+        <button type="submit" name="action" value="reject" class="button reject">Отклонить</button>
+    </form>
+</div>
+{% endblock %}

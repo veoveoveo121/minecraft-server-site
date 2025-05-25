@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section">
+    <h2>Вход для администрации</h2>
+    <form action="{{ url_for('admin_login') }}" method="post">
+        <label for="nickname">Никнейм:</label>
+        <input type="text" id="nickname" name="nickname" required>
+
+        <label for="token">Токен:</label>
+        <input type="password" id="token" name="token" required>
+
+        <button type="submit" class="button">Войти</button>
+    </form>
+    <style>
+        input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+    </style>
+</div>
+{% endblock %}

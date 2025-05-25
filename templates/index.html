@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% set wiki_link = "" %} <!--Тут нужно поставить ссылки на ресурсы-->
+{% set map_link = "" %}
+{% set launcher_link = "" %}
+{% set discord_link = "" %}
+{% set telegram_link = "" %}
+{% set vk_link = "" %}
+
+{% block content %}
+<div class="section">
+    <h2>О проекте</h2>
+    <p>Fugance — ванильный сервер с продвинутой системой кланов, онлайн-картами, войнами кланов и продвинутой валютной системой. Всё это в ванильном выживании без вайпов и сложных механик.</p>
+    <p><strong class="copyable" data-copy="mc.fugances.xyz">IP сервера: mc.fugances.xyz</strong></p>
+    <button class="button" onclick="window.location.href='{{ url_for('apply') }}'">Подать заявку на сервер</button>
+    <p>В течение суток вы можете проверить по IP адресу <strong>mc.fugances.xyz</strong>, приняли ли вас на сервер. В случае вопросов или проблем обращайтесь в нашем Telegram-чате к администрации сервера.</p>
+</div>
+
+<div class="section">
+    <h2>Галерея</h2>
+    <div class="gallery-container">
+        <button class="gallery-prev">&#10094;</button>
+        <div class="gallery">
+            {% for i in range(1, 6) %}
+            <img src="{{ url_for('static', filename='images/image' ~ i ~ '.png') }}" alt="Image {{ i }}">
+            {% endfor %}
+        </div>
+        <button class="gallery-next">&#10095;</button>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Администрация</h2>
+    <div class="staff-list">
+        {% set staff_members = [
+            {'nickname': 'GuFugu', 'discord': '@gufugu', 'rank': 'Основатель'},
+            {'nickname': 'Fruzencyrol', 'discord': '@fruzencyrol', 'rank': 'Сооснователь'},
+            {'nickname': 'ShadowRazzy', 'discord': '@ch1saexec', 'rank': 'Ст. Админ'},
+            {'nickname': 'Updatedplay', 'discord': '@ucantbreakme', 'rank': 'Мл. Админ'},
+            {'nickname': 'Strainfangard', 'discord': '@strainfangard', 'rank': 'Мл. Админ'},
+            {'nickname': 'KoolzDragon', 'discord': '@koolz_drakon', 'rank': 'Ст. Модератор'},
+        ] %}
+        {% for member in staff_members %}
+        <div class="staff-member">
+            <img src="https://cravatar.eu/head/{{ member.nickname }}/128.png" alt="{{ member.nickname }}">
+            <p class="staff-rank">{{ member.rank }}</p>
+            <p class="staff-nickname" data-nickname="{{ member.nickname }}">{{ member.nickname }}</p>
+            <p>Discord: {{ member.discord }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="section">
+    <h2>Скачать Лаунчер</h2>
+    <p>Установите наш лаунчер для удобного доступа к серверу.</p>
+    <a href="{{ launcher_link }}" class="button">Скачать лаунчер</a>
+</div>
+
+<div class="section">
+    <h2>Наши сообщества</h2>
+    <ul class="social-icons">
+        <li><a href="{{ discord_link }}" target="_blank"><img src="{{ url_for('static', filename='icons/discord.png') }}" alt="Discord"></a></li>
+        <li><a href="{{ telegram_link }}" target="_blank"><img src="{{ url_for('static', filename='icons/telegram.png') }}" alt="Telegram"></a></li>
+        <li><a href="{{ vk_link }}" target="_blank"><img src="{{ url_for('static', filename='icons/vk.png') }}" alt="ВКонтакте"></a></li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-dashboard">
+    <h2>Жалоба #{{ complaint_id }}</h2>
+    <p><strong>От:</strong> {{ complaint['nickname'] }}</p>
+    <p><strong>Описание:</strong> {{ complaint['description'] }}</p>
+    {% if complaint['coordinates'] %}
+        <p><strong>Координаты:</strong> {{ complaint['coordinates'] }}</p>
+    {% endif %}
+    {% if complaint['offender'] %}
+        <p><strong>Никнейм нарушителя:</strong> {{ complaint['offender'] }}</p>
+    {% endif %}
+    {% if complaint['screenshots'] %}
+        <p><strong>Скриншоты:</strong></p>
+        <div class="screenshots">
+            {% for screenshot in complaint['screenshots'] %}
+                <img src="{{ url_for('static', filename=screenshot) }}" alt="Скриншот">
+            {% endfor %}
+        </div>
+    {% endif %}
+    <p><strong>Статус:</strong> {{ complaint['status'] }}</p>
+    {% if complaint['assigned_to'] %}
+        <p><strong>В работе:</strong> {{ complaint['assigned_to'] }}</p>
+    {% endif %}
+
+    <form action="{{ url_for('view_complaint', complaint_id=complaint_id) }}" method="post">
+        {% if complaint['status'] == 'Новая' %}
+            <button type="submit" name="action" value="take" class="button">Взять в работу</button>
+        {% endif %}
+        {% if complaint['status'] in ['В работе', 'Новая'] %}
+            <button type="submit" name="action" value="close" class="button">Закрыть жалобу</button>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

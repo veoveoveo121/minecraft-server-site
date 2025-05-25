@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='complaint_form.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Подача жалобы</h2>
+    <form action="{{ url_for('complaint') }}" method="post" enctype="multipart/form-data">
+        <label for="nickname">Ваш никнейм:</label>
+        <input type="text" id="nickname" name="nickname" required>
+
+        <label for="description">Описание жалобы:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="coordinates">Координаты (если известно):</label>
+        <input type="text" id="coordinates" name="coordinates">
+
+        <label for="offender">Никнейм нарушителя (если известно):</label>
+        <input type="text" id="offender" name="offender">
+
+        <label for="screenshots">Прикрепить скриншоты:</label>
+        <input type="file" id="screenshots" name="screenshots" multiple accept="image/*">
+
+        <button type="submit" class="button">Отправить жалобу</button>
+    </form>
+</div>
+{% endblock %}

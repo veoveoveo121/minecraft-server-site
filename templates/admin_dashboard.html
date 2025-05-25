@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-dashboard">
+    <h2>Панель администратора</h2>
+    <p>Добро пожаловать, {{ session['admin_nickname'] }}! <a href="{{ url_for('admin_logout') }}">Выйти</a></p>
+
+    <h3>Заявки на сервер</h3>
+    {% if applications %}
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Никнейм</th>
+                    <th>Возраст</th>
+                    <th>Причина</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                    <tr>
+                        <td>{{ application.id }}</td>
+                        <td>{{ application['nickname'] }}</td>
+                        <td>{{ application['age'] }}</td>
+                        <td>{{ application['reason'] }}</td>
+                        <td>
+                            <a href="{{ url_for('view_application', application_id=application.id) }}" class="button">Просмотреть</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Нет новых заявок.</p>
+    {% endif %}
+
+    <h3>Жалобы игроков</h3>
+    {% if complaints %}
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Отправитель</th>
+                    <th>Описание</th>
+                    <th>Статус</th>
+                    <th>В работе</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for complaint in complaints %}
+                    <tr>
+                        <td>{{ complaint['id'] }}</td>
+                        <td>{{ complaint['nickname'] }}</td>
+                        <td>{{ complaint['description'] | truncate(50) }}</td>
+                        <td>{{ complaint['status'] }}</td>
+                        <td>{{ complaint['assigned_to'] or 'Никто' }}</td>
+                        <td>
+                            <a href="{{ url_for('view_complaint', complaint_id=complaint['id']) }}" class="button">Просмотреть</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Нет новых жалоб.</p>
+    {% endif %}
+</div>
+{% endblock %}

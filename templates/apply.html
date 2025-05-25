@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Подача заявки на сервер</h2>
+    <form action="{{ url_for('apply') }}" method="post">
+        <label for="nickname">Ваш никнейм:</label>
+        <input type="text" id="nickname" name="nickname" required>
+
+        <label for="age">Ваш возраст:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="reason">Почему вы хотите присоединиться к серверу?</label>
+        <textarea id="reason" name="reason" required></textarea>
+
+        <button type="submit" class="button">Отправить заявку</button>
+    </form>
+</div>
+{% endblock %}

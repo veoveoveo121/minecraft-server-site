@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Fugance - Ванильный Майнкрафт Сервер{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header id="main-header">
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Fugance Logo">
+            </a>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="{{ wiki_link }}">Вики</a></li>
+                <li class="dropdown">
+                    <a href="#">Карты</a>
+                    <ul class="dropdown-content">
+                        <li><a href="http://fugances.xyz:25566/">Карта мира</a></li>
+                        <li><a href="http://fugances.xyz:25566/">Карта мира ферм</a></li>
+                        <li><a href="http://fugances.xyz:25566/">Карта Энда</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('rules') }}">Правила</a></li>
+                <li><a href="{{ url_for('complaint') }}">Пожаловаться</a></li>
+                {% if session.get('admin_nickname') %}
+                    <li><a href="{{ url_for('admin_dashboard') }}">Админ. панель</a></li>
+                    <li><a href="{{ url_for('admin_logout') }}">Выход</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('admin_login') }}">Админ. вход</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="server-info">
+            <p><strong class="copyable" data-copy="mc.fugances.xyz">IP сервера: mc.fugances.xyz</strong> | Версия Minecraft: 1.21.1</p>
+        </div>
+    </header>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <div class="footer-content">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Fugance Logo" class="footer-logo">
+            <p>Вся размещенная информация на сайте не является публичной офертой.</p>
+            <p>Not an official Minecraft product. We are in no way affiliated with or endorsed by Mojang Synergies AB, Microsoft Corporation or other rightsholders. Icons by Icons8</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

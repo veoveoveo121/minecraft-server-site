@@ -1,0 +1,230 @@
+/* Стили для страницы с правилами */
+
+/* Контейнер для правил и боковой панели */
+.rules-content {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Боковая панель */
+.sidebar {
+    width: 250px;
+    margin-right: 20px;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+}
+
+.section-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.section-nav li {
+    margin-bottom: 10px;
+}
+
+.section-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.section-nav a:hover {
+    color: #ff9800;
+}
+
+/* Основное содержимое правил */
+.rules-main {
+    flex: 1;
+    background-color: rgba(30, 30, 30, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.rules-main h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.rule-section {
+    margin-bottom: 40px;
+}
+
+.rule-section h3 {
+    margin-bottom: 15px;
+}
+
+.rule-section p {
+    margin-bottom: 20px;
+}
+
+.rule {
+    position: relative;
+    padding: 10px 10px 10px 40px;
+    margin-bottom: 10px;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.rule:hover {
+    background-color: #3a3a3a;
+}
+
+.rule-number {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    cursor: pointer;
+    color: #ff9800;
+    transition: color 0.3s;
+}
+
+.rule-number:hover {
+    color: #ffc107;
+}
+
+.rule.highlighted {
+    background-color: #444444;
+}
+
+.sub-rule {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #3a3a3a;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #cccccc;
+}
+
+/* Стили для предупреждения */
+.search-recommendation {
+    background-color: rgba(255, 152, 0, 0.1);
+    border-left: 4px solid #ff9800;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.search-recommendation p {
+    margin: 0 0 10px 0;
+}
+
+.search-recommendation ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.search-recommendation li {
+    margin-bottom: 5px;
+}
+
+.shortcut-btn {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: default;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.shortcut-btn:hover {
+    background-color: #3a3a3a;
+}
+
+/* Стили для кода */
+code {
+    background-color: #1e1e1e;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff9800;
+}
+
+/* Стили для блоков кода */
+pre {
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Стили для команд */
+.command-line {
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-left: 4px solid #ff9800;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Стили для таблиц */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #444444;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #2a2a2a;
+}
+
+td {
+    background-color: #1e1e1e;
+}
+
+/* Стили для списков */
+ul, ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+ul li, ol li {
+    margin-bottom: 5px;
+}
+
+/* Стили для ссылок */
+.rules-main a {
+    color: #ff9800;
+    text-decoration: none;
+}
+
+.rules-main a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для выделенного текста */
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+/* Стили для цитат */
+blockquote {
+    background-color: #1e1e1e;
+    padding: 10px 20px;
+    border-left: 4px solid #ff9800;
+    margin-bottom: 20px;
+    font-style: italic;
+}
